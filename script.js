@@ -1,7 +1,16 @@
+let isCelsius = true;
+
+function toggleUnits() {
+  isCelsius = !isCelsius;
+  getWeather();
+}
+
 function getWeather() {
   const city = document.getElementById('cityInput').value;
   const apiKey = 'ca9e3e520ff74c52a41112626250406';
+  const unit = isCelsius ? "C" : "F";
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=3`;
+
 
   fetch(url)
     .then(response => {
@@ -43,4 +52,6 @@ function getWeather() {
       document.getElementById('weatherResult').innerHTML = `<p style="color:red;">${error.message}</p>`;
     });
 }
+
+
 
