@@ -33,16 +33,27 @@ function getWeather() {
 
       let forecastHTML = "<h3>3-Day Forecast:</h3><div class='forecast-grid'>";
       data.forecast.forecastday.forEach(day => {
-        forecastHTML += `
-          <div class="forecast-day">
-            <p><strong>${day.date}</strong></p>
-            <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}" />
-            <p>${day.day.condition.text}</p>
-            <p>Max: ${day.day.maxtemp_c}°C</p>
-            <p>Min: ${day.day.mintemp_c}°C</p>
+      const rawDate = new Date(day.date);
+
+      const options = { weekday: 'long' };
+      const weekday = rawDate.toLocaleDateString('en-US', options);
+
+      const dayNum = String(rawDate.getDate()).padStart(2, '0');
+      const month = String(rawDate.getMonth() + 1).padStart(2, '0');
+      const year = rawDate.getFullYear();
+
+      const formattedDate = `${weekday}, ${dayNum}/${month}/${year}`;
+
+      forecastHTML += `
+        <div class="forecast-day">
+          <p><strong>${formattedDate}</strong></p>
+          <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}" />
+          <p>${day.day.condition.text}</p>
+          <p>Max: ${day.day.maxtemp_c}°C</p>
+          <p>Min: ${day.day.mintemp_c}°C</p>
           </div>
-        `;
-      });
+          `;
+        });
       forecastHTML += "</div>";
 
 
