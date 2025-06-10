@@ -37,3 +37,23 @@ button {
   margin-top: 20px;
   text-align: left;
 }
+
+.forecast-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.forecast-day {
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

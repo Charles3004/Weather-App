@@ -24,7 +24,7 @@ app.post('/api/log-weather', (req, res) => {
   res.status(201).json({ message: 'Weather log saved!' });
 });
 
-// GET endpoint to view logs
+
 app.get('/api/logs', (req, res) => {
   const logs = JSON.parse(fs.readFileSync(logFile));
   res.json(logs);
